@@ -30,7 +30,7 @@ function createWindow() {
   win.loadURL(winURL)
 
   // 打开开发者工具
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   ipcMain.on('window-min', () => {
     win.minimize()
