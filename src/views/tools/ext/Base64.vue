@@ -6,7 +6,10 @@
           <div class="header">
             <div class="title">请输入要进行 Base64 编码或解码的字符</div>
             <div class="copy">
-              <b-button type="is-primary" size="is-small" @click="copyStr('wait_str')">复制</b-button>
+              <b-button type="is-primary" size="is-small" @click="copyStr('wait_str')">
+                <Copy theme="outline" size="12" fill="#fff"/>
+                复制
+              </b-button>
             </div>
           </div>
           <b-field>
@@ -17,9 +20,12 @@
       <div class="columns">
         <div class="column">
           <div class="buttons">
-            <b-button :type="cur_type === 'encode' ? 'is-primary' : 'is-success is-light'" @click="handleBase64Encode">编码 (Encode)</b-button>
-            <b-button :type="cur_type === 'decode' ? 'is-primary' : 'is-success is-light'" @click="handleBase64Decode">解码 (Decode)</b-button>
-            <b-button type="is-success is-light" @click="changeAesStr">↕ 交换</b-button>
+            <b-button :type="cur_type === 'encode' ? 'is-primary' : 'is-success is-light'" size="is-small" @click="handleBase64Encode">编码 (Encode)</b-button>
+            <b-button :type="cur_type === 'decode' ? 'is-primary' : 'is-success is-light'" size="is-small" @click="handleBase64Decode">解码 (Decode)</b-button>
+            <b-button type="is-success is-light" size="is-small" @click="changeAesStr">
+              <Change theme="outline" size="12" fill="#333"/>
+              交换
+            </b-button>
             <div class="remark">
               (编码快捷键：Ctrl + Enter )
             </div>
@@ -31,7 +37,10 @@
           <div class="header">
             <div class="title">Base64 编码或解码的结果：</div>
             <div class="copy">
-              <b-button type="is-primary" size="is-small" @click="copyStr('res_str')">复制</b-button>
+              <b-button type="is-primary" size="is-small" @click="copyStr('res_str')">
+                <Copy theme="outline" size="12" fill="#fff"/>
+                复制
+              </b-button>
             </div>
           </div>
           <b-field>
@@ -46,6 +55,7 @@
 <script>
 import {SnackbarProgrammatic as Snackbar} from 'buefy'
 import {base64_decode, base64_encode, isEmpty} from '@/utils/helper'
+import {Copy, Change} from "@icon-park/vue"
 
 export default {
   data() {
@@ -56,6 +66,8 @@ export default {
     }
   },
   components: {
+    Copy,
+    Change,
   },
   methods: {
     handleBase64Encode() {

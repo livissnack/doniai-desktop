@@ -1,4 +1,4 @@
-const { app, Menu, Tray, BrowserWindow, shell, ipcMain } = require('electron')
+const { app, Menu, Tray, BrowserWindow, shell, ipcMain, dialog } = require('electron')
 const path = require('path')
 
 console.log(process.env)
@@ -30,7 +30,7 @@ function createWindow() {
   win.loadURL(winURL)
 
   // 打开开发者工具
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
 
   ipcMain.on('window-min', () => {
     win.minimize()
@@ -51,6 +51,47 @@ function createWindow() {
 
   ipcMain.on('window-change-size', () => {
     win.setSize(1200, 812)
+  })
+
+  ipcMain.on('download', (event, { payload }) => {
+    win.webContents.downloadURL(payload.fileURL)
+    win.webContents.session.on('will-download', (event, item, webContents) => {
+      //   将文件保存在系统的下载目录
+      const filePath = path.join(app.getPath('downloads'), item.getFilename())
+      // 自动保存
+      item.setSavePath(filePath)
+      // 下载进度
+      item.on('updated', (event, state) => {
+        switch (state) {
+          case 'progressing':
+            win.webContents.send('download-progress', (item.getReceivedBytes() / item.getTotalBytes() * 100).toFixed(0))
+            break
+          case 'interrupted ':
+            win.webContents.send('download-paused', true)
+            break
+          default:
+
+            break
+        }
+      })
+      // 下载完成或失败
+      item.once('done', (event, state) => {
+        switch (state) {
+          case 'completed':
+            const data = {
+              filePath
+            }
+            win.webContents.send('download-done', data)
+            break
+          case 'interrupted':
+            win.webContents.send('download-error', true)
+            dialog.showErrorBox('下载出错', '由于网络或其他未知原因导致下载出错.')
+            break
+          default:
+            break
+        }
+      })
+    })
   })
 
   if (process.platform === 'win32') {

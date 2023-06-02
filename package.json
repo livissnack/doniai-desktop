@@ -59,8 +59,14 @@
 		"email": "brucesnack@outlook.com",
 		"url": "https://livissnack.com"
 	},
-	"engines": { "node": ">=14.2.0 <16.0.0" },
-	"keywords": ["desktop app", "app", "software"],
+	"engines": {
+		"node": ">=14.2.0 <16.0.0"
+	},
+	"keywords": [
+		"desktop app",
+		"app",
+		"software"
+	],
 	"license": "MIT",
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^5.15.1",
@@ -69,8 +75,10 @@
 		"axios": "^1.4.0",
 		"buefy": "^0.9.4",
 		"core-js": "^3.6.5",
+		"crypto-js": "^4.1.1",
 		"flv.js": "^1.5.0",
 		"hls.js": "^0.14.17",
+		"json-to-pretty-yaml": "^1.2.2",
 		"monaco-editor": "^0.33.0",
 		"mpvue-calendar-rzt": "^1.0.3-beta",
 		"vditor": "^3.8.18",

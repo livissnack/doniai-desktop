@@ -30,12 +30,15 @@
           :key="index"
         >
           <span class="ls-text">
-            <TicketOne theme="outline" size="14" fill="#333" v-if="menu.icon === 'ticket'" />
+            <Key theme="outline" size="14" fill="#333" v-if="menu.icon === 'key'" />
             <Bitcoin theme="outline" size="14" fill="#333" v-if="menu.icon === 'btc'" />
             <ExchangeOne theme="outline" size="14" fill="#333" v-if="menu.icon === 'exchange'" />
             <EmailSecurity theme="outline" size="14" fill="#333" v-if="menu.icon === 'email'" />
             <FileConversion theme="outline" size="14" fill="#333" v-if="menu.icon === 'file'" />
             <Iphone theme="outline" size="14" fill="#333" v-if="menu.icon === 'phone'" />
+            <Tv theme="outline" size="14" fill="#333" v-if="menu.icon === 'tv'" />
+            <MessagePrivacy theme="outline" size="14" fill="#333" v-if="menu.icon === 'message-privacy'" />
+            <Tool theme="outline" size="14" fill="#333" v-if="menu.icon === 'tool'" />
           </span>
           <span class="ls-text ls-bold black ml2">{{ menu.title }}</span>
         </div>
@@ -49,7 +52,7 @@
 
 <script>
 // @ is an alias to /src
-import { TicketOne, Bitcoin, ExchangeOne, EmailSecurity, FileConversion, Iphone, DEFAULT_ICON_CONFIGS } from "@icon-park/vue";
+import { Key, Bitcoin, ExchangeOne, EmailSecurity, FileConversion, Iphone, Tv, MessagePrivacy, Tool, DEFAULT_ICON_CONFIGS } from "@icon-park/vue";
 const IconConfig = { ...DEFAULT_ICON_CONFIGS, prefix: "icon" };
 
 export default {
@@ -64,9 +67,9 @@ export default {
       menus: [
         {
           id: 1,
-          title: "12306查票工具",
-          path: "/tools/ticket",
-          icon: "ticket",
+          title: "随机密码生成器",
+          path: "/tools/password",
+          icon: "key",
         },
         {
           id: 2,
@@ -102,24 +105,33 @@ export default {
           id: 7,
           title: "Base64工具",
           path: "/tools/Base64",
-          icon: "phone",
+          icon: "tool",
         },
         {
           id: 8,
+          title: "加解密",
+          path: "/tools/crypt",
+          icon: "message-privacy",
+        },
+        {
+          id: 9,
           title: "直播源检测",
           path: "/tools/m3u_check",
-          icon: "phone",
+          icon: "tv",
         },
       ],
     };
   },
   components: {
-    TicketOne,
+    Key,
     Bitcoin,
     ExchangeOne,
     EmailSecurity,
     FileConversion,
     Iphone,
+    MessagePrivacy,
+    Tv,
+    Tool,
   },
   methods: {
     jumpRoute(path) {
