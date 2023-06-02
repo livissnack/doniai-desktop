@@ -154,5 +154,8 @@ export default {
 <style lang="less" scoped>
 .videoWrap {
   height: 650px;
+  .art-video-player {
+    height: 75% !important;
+  }
 }
 </style>

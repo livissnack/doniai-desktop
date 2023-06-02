@@ -248,3 +248,35 @@ export function snsArr(str) {
   })
   return newArr
 }
+
+/**
+ * 检查字符串是否是json
+ * @param value
+ * @returns {boolean}
+ */
+export function isJson(value) {
+  try {
+    JSON.parse(value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * base64加密
+ * @param str
+ */
+export function base64_encode(str) {
+  let wait_str = window.encodeURIComponent(str)
+  return window.btoa(wait_str)
+}
+
+/**
+ * base64解密
+ * @param str
+ */
+export function base64_decode(str) {
+  let wait_str = window.decodeURIComponent(str)
+  return window.atob(wait_str)
+}

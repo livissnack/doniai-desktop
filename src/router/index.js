@@ -60,13 +60,13 @@ Vue.use(VueRouter)
     name: 'Tools',
     component: () => import('../views/tools/Index.vue'),
     children: [
-      {path: '/tools/list', name: 'ToolsList', component: () => import('../views/tools/ext/List.vue')},
+      {path: '/tools', name: 'Tools', component: () => import('../views/tools/ext/List.vue')},
       {path: '/tools/ticket', name: 'ToolsTicket', component: () => import('../views/tools/ext/Ticket.vue')},
       {path: '/tools/to_clash', name: 'ToolsNodeToClash', component: () => import('../views/tools/ext/NodeToClash.vue')},
       {path: '/tools/btc', name: 'ToolsBtc', component: () => import('../views/tools/ext/Btc.vue')},
       {path: '/tools/exchange', name: 'ToolsExchange', component: () => import('../views/tools/ext/Exchange.vue')},
       {path: '/tools/email', name: 'ToolsEmail', component: () => import('../views/tools/ext/Email.vue')},
-      {path: '/tools/jwt', name: 'ToolsJwt', component: () => import('../views/tools/ext/Jwt.vue')},
+      {path: '/tools/base64', name: 'ToolsJwt', component: () => import('../views/tools/ext/Base64.vue')},
       {path: '/tools/m3u_check', name: 'ToolsM3uCheck', component: () => import('../views/tools/ext/M3uCheck.vue')},
     ]
   }

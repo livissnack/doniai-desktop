@@ -100,8 +100,8 @@ export default {
         },
         {
           id: 7,
-          title: "JWT工具",
-          path: "/tools/jwt",
+          title: "Base64工具",
+          path: "/tools/Base64",
           icon: "phone",
         },
         {
