@@ -29,3 +29,7 @@ export async function uploadFile(file) {
 export async function getParseLiveAddr(params) {
   return request('post', `${ApiVersion}/live/parse`, params)
 }
+
+export async function getEpgUrl(url, params) {
+  return request('get', `${url}?${querystring.stringify(params)}`)
+}

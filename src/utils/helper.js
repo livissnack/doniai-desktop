@@ -17,7 +17,7 @@ export function getResourceType(video_url) {
     return "video";
   }
 
-  return "未知的直播类别";
+  return "unknow";
 }
 
 export function isLive(video_url) {

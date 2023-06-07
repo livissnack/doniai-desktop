@@ -145,7 +145,7 @@ export default {
       const { data } = await getVideo(video_id)
       let url = data.data.url
       let live_type = getResourceType(url)
-      if (live_type === 'php') {
+      if (live_type === 'php' || live_type === 'unknow') {
         data.data.url = await this.parseLiveStream(url)
       }
       this.live_data = { ...data.data }
@@ -172,7 +172,7 @@ export default {
     },
     async changeLive(live) {
       let live_type = getResourceType(live.url)
-      if (live_type === 'php') {
+      if (live_type === 'php' || live_type === 'unknow') {
         live.url = await this.parseLiveStream(live.url)
       } else if (live_type === 'm3u8' || live_type === 'flv') {
         this.live_data = { ...live }
