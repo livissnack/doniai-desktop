@@ -174,10 +174,13 @@ export default {
       let live_type = getResourceType(live.url)
       if (live_type === 'php') {
         live.url = await this.parseLiveStream(live.url)
+      } else if (live_type === 'm3u8' || live_type === 'flv') {
+        this.live_data = { ...live }
+        this.is_live = live.type === 1
+        await this.reloadLoadPlayer()
+      } else {
+        live.url = await this.parseLiveStream(live.url)
       }
-      this.live_data = { ...live }
-      this.is_live = live.type === 1
-      await this.reloadLoadPlayer()
     },
     reloadLoadPlayer() {
       this.hackReset = false
@@ -198,6 +201,7 @@ export default {
     },
     getInstance(art) {
       console.info(art)
+
     },
   },
 }
