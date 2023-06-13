@@ -98,7 +98,7 @@ export default {
         {
           id: 6,
           title: "验机报告",
-          path: "/tools/email",
+          path: "/tools/phone",
           icon: "phone",
         },
         {

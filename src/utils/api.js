@@ -30,6 +30,6 @@ export async function getParseLiveAddr(params) {
   return request('post', `${ApiVersion}/live/parse`, params)
 }
 
-export async function getEpgUrl(url, params) {
+export async function getEpgUrl(url, params = { type: 'display'}) {
   return request('get', `${url}?${querystring.stringify(params)}`)
 }

@@ -69,6 +69,7 @@ Vue.use(VueRouter)
       {path: '/tools/base64', name: 'ToolsJwt', component: () => import('../views/tools/ext/Base64.vue')},
       {path: '/tools/crypt', name: 'ToolsCrypt', component: () => import('../views/tools/ext/Crypt.vue')},
       {path: '/tools/m3u_check', name: 'ToolsM3uCheck', component: () => import('../views/tools/ext/M3uCheck.vue')},
+      {path: '/tools/phone', name: 'ToolsPhone', component: () => import('../views/tools/ext/Phone.vue')},
     ]
   }
 ]

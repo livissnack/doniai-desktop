@@ -1,4 +1,9 @@
 export function getResourceType(video_url) {
+  // ["douyu", "huya", "douyin", "yy", "youtube"]
+  if (platformCheck(video_url,'douyu') || platformCheck(video_url,'huya') || platformCheck(video_url,'douyin') || platformCheck(video_url,'yy') || platformCheck(video_url,'youtube')) {
+    return "platform";
+  }
+
   let extName = getFileExt(video_url);
 
   if (["m3u8"].includes(extName)) {
@@ -18,6 +23,11 @@ export function getResourceType(video_url) {
   }
 
   return "unknow";
+}
+
+export function platformCheck(video_url, key) {
+  console.log(video_url, 'oooo---', key)
+  return video_url.includes(key);
 }
 
 export function isLive(video_url) {

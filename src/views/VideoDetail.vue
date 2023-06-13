@@ -174,7 +174,7 @@ export default {
       let live_type = getResourceType(live.url)
       if (live_type === 'php' || live_type === 'unknow') {
         live.url = await this.parseLiveStream(live.url)
-      } else if (live_type === 'm3u8' || live_type === 'flv') {
+      } else if (live_type === 'hls' || live_type === 'flv') {
         this.live_data = { ...live }
         this.is_live = live.type === 1
         await this.reloadLoadPlayer()

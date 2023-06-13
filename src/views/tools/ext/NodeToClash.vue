@@ -52,7 +52,6 @@
             <div class="title">节点 转换 的结果：</div>
             <div class="copy">
               <div>
-<!--                <a :href="currentFilePath" :download="currentFilePath" class="button is-danger is-small">下载</a>-->
                 <b-button id="download-link" type="is-is-danger" size="is-small" @click="downloadFile">下载</b-button>
                 <b-button class="ml-10" type="is-primary" size="is-small" @click="copyStr('res_str')">
                   <Copy theme="outline" size="12" fill="#fff"/>
@@ -77,7 +76,6 @@ import clash_demo_json from '@/utils/jsons/clash.json'
 import {Airplay, Change, Copy, DEFAULT_ICON_CONFIGS, Down, Send, Up } from '@icon-park/vue'
 import {SnackbarProgrammatic as Snackbar} from 'buefy'
 import {base64_encode, isEmpty, timeFileName} from '@/utils/helper'
-
 const ipc = window.require ? window.require('electron').ipcRenderer : require('electron').ipcRenderer
 const IconConfig = { ...DEFAULT_ICON_CONFIGS, prefix: 'icon' }
 
@@ -128,7 +126,6 @@ https://t.me/socks?server=1.2.3.4&port=123&user=username&pass=password`,
       }
 
       if (this.currentMenu.id === 3) {
-        console.log(clash_demo_json, 'pppp-------')
         this.res_str = this.parseClash(clash_demo_json)
         this.writeYaml(this.res_str)
       }
@@ -157,7 +154,7 @@ https://t.me/socks?server=1.2.3.4&port=123&user=username&pass=password`,
     downloadFile() {
       ipc.send("download", {
         payload: {
-          fileURL: this.currentFilePath
+          saveStr: this.res_str,
         }
       })
     },
